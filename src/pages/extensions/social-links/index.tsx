@@ -44,14 +44,18 @@ function SocialLinksInput() {
   ];
 
   return (
-    <div>
+    <div className="socialLinks__root">
       {socialLinks.map((label) => (
-        <fieldset>
-          <label htmlFor={label}>{label}</label>
+        <fieldset className="socialLinks__field">
+          <label htmlFor={label} className="socialLinks__field-label">
+            {label}
+          </label>
           <input
             id={label}
             value={value[label]}
+            className="socialLinks__field-input"
             onChange={({ target: { value: val } }) =>
+              // this needs throttling
               onChange({
                 ...value,
                 [label]: val,
@@ -60,13 +64,6 @@ function SocialLinksInput() {
           />
         </fieldset>
       ))}
-      <label htmlFor={fieldId}>Social links</label>
-      <textarea
-        id={fieldId}
-        onChange={({ target: { value: val } }) => onChange(val)}
-      >
-        {value}
-      </textarea>
     </div>
   );
 }
