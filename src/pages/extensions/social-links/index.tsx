@@ -45,7 +45,7 @@ function SocialLinksInput() {
   } = useUiExtension();
 
   const fieldId = "social-links-field";
-  const socialLinks = SOCIAL_LINKS.split(",");
+  const socialLinks = SOCIAL_LINKS.split(", ");
 
   return (
     <div className="socialLinks__root">
