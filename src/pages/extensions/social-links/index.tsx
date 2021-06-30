@@ -33,7 +33,10 @@ function SocialLinksInput() {
   return (
     <div>
       <label htmlFor={fieldId}>Social links</label>
-      <textarea id={fieldId} onChange={onChange}>
+      <textarea
+        id={fieldId}
+        onChange={({ target: { value: val } }) => onChange(val)}
+      >
         {value}
       </textarea>
     </div>
