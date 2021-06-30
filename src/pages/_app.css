@@ -10,13 +10,9 @@ body {
 }
 
 .socialLinks__field {
-  display: flex;
+  display: inline-block;
   border: none;
   padding: 0.5em 1em 0.7em 0;
-}
-
-.socialLinks__field-label {
-  flex-basis: 30%;
 }
 
 .socialLinks__field-input {

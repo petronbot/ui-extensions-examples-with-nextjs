@@ -13,6 +13,15 @@ const extensionDeclaration: ExtensionDeclaration = {
   name: "Social links",
   fieldType: FieldExtensionType.JSON,
   features: [FieldExtensionFeature.FieldRenderer],
+  config: {
+    SOCIAL_LINKS: {
+      type: "string",
+      displayName: "Social links",
+      description:
+        'A comma-separated list of social links e.g. "Facebook", "Twitter", "TikTok"',
+      required: true,
+    },
+  },
 };
 
 export default function SocialLinksField({ extensionUid }) {
@@ -27,21 +36,16 @@ export default function SocialLinksField({ extensionUid }) {
 
 /// ok let's make an extension out of this
 function SocialLinksInput() {
-  const { value, onChange } = useUiExtension();
+  const {
+    value,
+    onChange,
+    extension: {
+      config: { SOCIAL_LINKS },
+    },
+  } = useUiExtension();
+
   const fieldId = "social-links-field";
-  const socialLinks = [
-    "Instagram",
-    "Facebook",
-    "Twitter",
-    "Tiktok",
-    "YouTube",
-    "Spotify",
-    "Email",
-    "Bandcamp",
-    "Soundcloud",
-    "Apple Music",
-    "Website",
-  ];
+  const socialLinks = SOCIAL_LINKS.split(",");
 
   return (
     <div className="socialLinks__root">
