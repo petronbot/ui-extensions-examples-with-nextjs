@@ -29,9 +29,37 @@ export default function SocialLinksField({ extensionUid }) {
 function SocialLinksInput() {
   const { value, onChange } = useUiExtension();
   const fieldId = "social-links-field";
+  const socialLinks = [
+    "Instagram",
+    "Facebook",
+    "Twitter",
+    "Tiktok",
+    "YouTube",
+    "Spotify",
+    "Email",
+    "Bandcamp",
+    "Soundcloud",
+    "Apple Music",
+    "Website",
+  ];
 
   return (
     <div>
+      {socialLinks.map((label) => (
+        <fieldset>
+          <label htmlFor={label}>{label}</label>
+          <input
+            id={label}
+            value={value[label]}
+            onChange={({ target: { value: val } }) =>
+              onChange({
+                ...value,
+                [label]: val,
+              })
+            }
+          />
+        </fieldset>
+      ))}
       <label htmlFor={fieldId}>Social links</label>
       <textarea
         id={fieldId}
